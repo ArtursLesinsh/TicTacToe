@@ -1,0 +1,17 @@
+.board {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[3];
+  -ms-grid-columns: (1fr)[3];
+      grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+  height: 400px;
+  width: 400px;
+  grid-gap: 3px;
+  margin: 80px auto 0 auto;
+}
+
+.board a {
+  background: grey;
+  border: 1px solid #000;
+}
+/*# sourceMappingURL=style.css.map */
