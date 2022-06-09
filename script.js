@@ -1,27 +1,29 @@
 const board = document.querySelector('.board');
-const body = document.querySelector('body');
 let moves_count = 0;
-
-let reset = document.createElement('button');
-reset.textContent = 'Reset';
 
 for (let i = 1; i <= 9; i++) {
     let cell = document.createElement('a');
     cell.setAttribute('href', '#');
-    cell.onclick = function() {
+    cell.onclick = function(event) {
+        event.preventDefault();
         if (this.textContent != '') {
             return;
-        }
-        moves_count++; 
-        if(moves_count % 2 == 0) {
-            this.textContent = 'o';  
+        } 
+        if(moves_count++ % 2 == 0) {
+            this.textContent = 'x';  
         }
         else {
-            this.textContent = 'x';  
+            this.textContent = 'o';  
         }
     };
 
     board.append(cell);
 }
 
-body.append(reset);
+document.querySelector('.button').onclick = function (event) {
+    event.preventDefault();
+    for (let cell of board.children) {
+        cell.textContent = '';
+    }
+    moves_count = 0;
+};

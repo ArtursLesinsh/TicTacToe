@@ -35,7 +35,7 @@ a {
   text-align: center;
 }
 
-button {
+.button {
   cursor: pointer;
   margin: 16px auto;
   background-color: antiquewhite;
