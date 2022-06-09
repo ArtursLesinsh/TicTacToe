@@ -16,7 +16,7 @@ for (let i = 0; i = 9; i++) {
         this.textContent = symbol;
 
         if (checkWinner(symbol)) {
-            document.querySelector('.message').textContent = "Winner is" + symbol + " !";
+            showMessage("Winner is" + symbol + " !");
         }
     };
 
@@ -25,11 +25,13 @@ for (let i = 0; i = 9; i++) {
 
 document.querySelector('.button').onclick = function (event) {
     event.preventDefault();
-    for (let cell of board.children) {
-        cell.textContent = '';
-    }
-    moves_count = 0;
+    resetGame();
 };
+
+document.querySelector('.background').onclick = function () {
+    resetGame();
+    hideMessage();
+}
 
 const win_combination = [
     [0, 1, 2],
@@ -55,4 +57,23 @@ function checkWinner(symbol) {
         }
     }
     return false;
+}
+
+const message_bg = document.querySelector('.background');
+const message_element = message_bg.querySelector('.message');
+function showMessage (text) {
+    message_bg.classList.add('show');
+    message_element.textContent = text;
+}
+
+function hideMessage() {
+    message_bg.classList.remove('show');
+    message_element.textContent = "";
+}
+
+function resetGame () {
+    for (let cell of board.children) {
+        cell.textContent = '';
+    }
+        moves_count = 0;
 }
